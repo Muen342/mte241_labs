@@ -1,5 +1,6 @@
-./objects/retarget.o: Retarget.c \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\rt_misc.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stddef.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h uart.h
+.\objects\retarget.o: Retarget.c
+.\objects\retarget.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\retarget.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\rt_misc.h
+.\objects\retarget.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\retarget.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\retarget.o: uart.h

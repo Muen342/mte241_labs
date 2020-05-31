@@ -9,82 +9,36 @@ License Information: Muen Zhang, None, LIC=----
  
 Tool Versions:
 Toolchain:       MDK-Lite  Version: 5.30.0.0
-Toolchain Path:  C:\Keil_v5\ARM\ARMCLANG\Bin
-C Compiler:      ArmClang.exe V6.14
-Assembler:       Armasm.exe V6.14
-Linker/Locator:  ArmLink.exe V6.14
-Library Manager: ArmAr.exe V6.14
-Hex Converter:   FromElf.exe V6.14
+Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 6 (build 750)
+Assembler:       Armasm.exe V5.06 update 6 (build 750)
+Linker/Locator:  ArmLink.exe V5.06 update 6 (build 750)
+Library Manager: ArmAr.exe V5.06 update 6 (build 750)
+Hex Converter:   FromElf.exe V5.06 update 6 (build 750)
 CPU DLL:         SARMCM3.DLL V5.30.0.0
 Dialog DLL:      DARMP1.DLL V1.27.0.0
 Target DLL:      UL2CM3.DLL V1.163.3.0
 Dialog DLL:      TCM.DLL V1.42.0.0
  
 <h2>Project:</h2>
-C:\Users\muen2\Documents\2B\mte241\lab 1\Lab1.uvprojx
-Project File Date:  05/25/2020
+C:\Users\muen2\Documents\2B\mte241\mte241_labs\lab_1\Lab1.uvprojx
+Project File Date:  05/29/2020
 
 <h2>Output:</h2>
-*** Using Compiler 'V6.14', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
-Build target 'Target 1'
-Retarget.c(46): warning: no previous extern declaration for non-static variable 'uart_init_called' [-Wmissing-variable-declarations]
-volatile uint8_t uart_init_called = 0;
-                 ^
-Retarget.c(46): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-volatile uint8_t uart_init_called = 0;
-         ^
-Retarget.c(85): warning: implicit conversion loses integer precision: 'int' to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
-                        UARTSendChar(PORT_NUM, c);
-                        ~~~~~~~~~~~~           ^
-Retarget.c(52): warning: no previous prototype for function 'sendchar' [-Wmissing-prototypes]
-int sendchar( int c ) {
-    ^
-Retarget.c(52): note: declare 'static' if the function is not intended to be used outside of this translation unit
-int sendchar( int c ) {
-^
-static 
-Retarget.c(99): warning: no previous prototype for function 'getkey' [-Wmissing-prototypes]
-int getkey( void ) {
-    ^
-Retarget.c(99): note: declare 'static' if the function is not intended to be used outside of this translation unit
-int getkey( void ) {
-^
-static 
-Retarget.c(119): error: redefinition of '__FILE'
-struct __FILE { int handle; /* Add whatever you need here */ };
-       ^
-C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h(119): note: previous definition is here
-struct __FILE {
-       ^
-Retarget.c(124): warning: unused parameter 'f' [-Wunused-parameter]
-int fputc( int ch, FILE *f ) {
-                         ^
-Retarget.c(130): warning: unused parameter 'f' [-Wunused-parameter]
-int fgetc( FILE *f ) {
-                 ^
-Retarget.c(139): warning: unused parameter 'f' [-Wunused-parameter]
-int ferror( FILE *f ) {
-                  ^
-Retarget.c(146): warning: no previous prototype for function '_ttywrch' [-Wmissing-prototypes]
-void _ttywrch( int ch ) {
-     ^
-Retarget.c(146): note: declare 'static' if the function is not intended to be used outside of this translation unit
-void _ttywrch( int ch ) {
-^
-static 
-Retarget.c(152): warning: unused parameter 'return_code' [-Wunused-parameter]
-void _sys_exit( int return_code ) {
-                    ^
-Retarget.c(152): warning: no previous prototype for function '_sys_exit' [-Wmissing-prototypes]
-void _sys_exit( int return_code ) {
-     ^
-Retarget.c(152): note: declare 'static' if the function is not intended to be used outside of this translation unit
-void _sys_exit( int return_code ) {
-^
-static 
-10 warnings and 1 error generated.
+*** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
+Rebuild target 'Target 1'
 compiling Retarget.c...
-".\Objects\Lab1.axf" - 1 Error(s), 10 Warning(s).
+compiling bst.c...
+bst.c(308): warning:  #1-D: last line of file ends without a newline
+  }
+bst.c: 1 warning, 0 errors
+compiling p1_main.c...
+assembling startup_LPC17xx.s...
+compiling uart.c...
+compiling system_LPC17xx.c...
+linking...
+Program Size: Code=2984 RO-data=236 RW-data=856 ZI-data=16512  
+".\Objects\Lab1.axf" - 0 Error(s), 1 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -115,8 +69,7 @@ Package Vendor: Keil
       Source file:   Device\Source\system_LPC17xx.c
       Source file:   Device\Source\ARM\startup_LPC17xx.s
       Include file:  Device\Include\LPC17xx.h
-Target not created.
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>
