@@ -21,10 +21,10 @@
 *               to main.c or bst.c.
 *****************************************************************
 *  1. Made bracket spacing uniform
-*  2.
+*  2. made indenting uniform
 *  3. Made "if" statement bracketing uniform and added brackets to single line "if" statements
-*  4. 
-*  5. 
+*  4. added white space in between functions for more readability
+*  5. moved comments to inside else if statements instead of above to make the programming flow more clear such that else if would be on the line after the closing brace of the if statement
 ****************************************************************/
 
 /*****************************************************************
@@ -63,15 +63,19 @@ void bsn_init(bsn_t *node, S32 val)
 //Initialize the binary search tree so that it is empty. Run time: &Theta(1)
 void bst_init(bst_t *tree) 
 {
-tree->root = NULL;
-tree->size = 0;
+	tree->root = NULL;
+	tree->size = 0;
 }
+
+
 
 //Remove all nodes from this binary search tree. Run time: T(n) with T(n) memory. 
 //Note: Remember that you do not have to keep a search-tree structure while you are 
 //destroying the tree. If you maintain the search-tree structure, the run time will be O(n2). 
 //This run time is not required for 2014.
 void bst_destroy(bst_t *tree) {}
+
+
 
 //Return the number of nodes in the binary search tree. Run time: &Theta(1)
 size_t bst_size(bst_t *tree) 
@@ -80,6 +84,9 @@ size_t bst_size(bst_t *tree)
 	treeSize = tree->size;
 	return treeSize;
 }
+
+
+
 
 //Insert the integer n into the binary search tree and return false if n is 
 //already in the tree (do not add a duplicate into the tree) and true otherwise. 
@@ -96,9 +103,9 @@ bool bst_insert(bst_t *tree, S32 val)
 	//special case: inserting at the root node
 	if(p_currNode == NULL)
 	{
-	tree->root = p_newNode;
-	tree->size = tree->size + 1;	
-	return __TRUE;
+		tree->root = p_newNode;
+		tree->size = tree->size + 1;	
+		return __TRUE;
 	}
 	
 	//anything but root
@@ -140,6 +147,9 @@ bool bst_insert(bst_t *tree, S32 val)
 }
 
 
+
+
+
 // Returns the smallest integer in the binary search tree. Return INT_MAX if the tree is empty. Run time: O(h)
 S32 bst_min(bst_t *tree) 
 {
@@ -158,6 +168,9 @@ S32 bst_min(bst_t *tree)
 	
 	return p_currNode->val;
 }
+
+
+
 
 
 // Returns the largest integer in the binary search tree. Return INT_MIN if the tree is empty. Run time: O(h)
@@ -179,6 +192,10 @@ S32 bst_max(bst_t *tree)
 	return p_currNode->val;
 }
 
+
+
+
+
 // Perform the actual deletion of the node
 // There are three possible cases:
 //	1. It is a leaf node
@@ -192,20 +209,21 @@ void bst_delete (bsn_t *p_currNode, bsn_t *p_parentNode)
 	// case 1: leaf node, just delete
 	if((p_currNode->right == NULL) && (p_currNode->left == NULL)) 
 	{
-	//update the pointer on the parent node to NULL
-	if(p_parentNode->left == p_currNode) 
-	{
-	p_parentNode->left = NULL;
+		//update the pointer on the parent node to NULL
+		if(p_parentNode->left == p_currNode) 
+		{
+			p_parentNode->left = NULL;
+		}
+		else 
+		{
+			p_parentNode->right = NULL;
+		}
 	}
-	else 
-	{
-	p_parentNode->right = NULL;
-	}
-	}
-	// case 3: two children, pick one to replace with
-	// balancing was not a parameter, so we will always take max of left branch to replace it with
 	else if ((p_currNode->right != NULL) && (p_currNode->left != NULL)) 
 	{
+		//moved this to inside the else if to increase readability of programming flow
+		// case 3: two children, pick one to replace with
+		// balancing was not a parameter, so we will always take max of left branch to replace it with
 		p_swapNode = p_currNode->left;
 		p_swapParent = p_currNode;
 		
