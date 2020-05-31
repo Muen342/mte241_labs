@@ -20,11 +20,10 @@
 *               justification for the change. You may make changes 
 *               to main.c or bst.c.
 *****************************************************************
-*  1. bst_insert function, line 125, "p_mewNode" is a syntax error, replaced with "p_newNode".
-*			Found on initial code read through.
-*  2. Line 155, "U32" becomes "S32" syntax error
-*  3. Line 178, added "*" to function declaration to initialize pointers
-*  4. line 226 "." changed to "->"
+*  1. Made all bracket spacing standard.
+*  2. Removed unnecessary whitespace in and between functions
+*  3. 
+*  4. 
 *  5. 
 ****************************************************************/
 
@@ -38,20 +37,21 @@
 *               description of how you used the tools to find and
 *               fix it. They can be in main.c or bst.c.
 *****************************************************************
-*  1. bool bst_erase function, Line 287, code had previously had "+=" which increments value instead of decrements. Changed to "-=".
+*  1. Bool bst_erase function, Line 287, code had previously had "+=" which increments value instead of decrements. Changed to "-=".
 *			Found through intitial code read through
-*  2. void bst_delete function, line 206, "p_swapNode = p_swapNode->left;" changed to "p_swapNode = p_swapNode->right;", in a bst the right most node is
+*  2. Void bst_delete function, line 206, "p_swapNode = p_swapNode->left;" changed to "p_swapNode = p_swapNode->right;", in a bst the right most node is
 *			the max value in the tree. Used the step into function to check values through transversal and realized it was going to the wrong side.
-*  3. void bst_delete function, lines 237, line 241, "p_parentNode->left = p_currNode->right;" swapped with "p_parentNode->right = p_currNode->right;"
+*  3. Void bst_delete function, lines 237, line 241, "p_parentNode->left = p_currNode->right;" swapped with "p_parentNode->right = p_currNode->right;"
 * 		since
-*  4.
+*  4	Void bst_delete function, line 197, "else if ((p_currNode->right != NULL) & (p_currNode->left != NULL))" changed to "else if ((p_currNode->right != NULL) && (p_currNode->left != NULL))"
+*			since "&" is not the boolean operator rather a bitwise comparator making it a logical error. Visual inspection from stepping through the code.
 ****************************************************************/
 
 #include <stdio.h>
 #include "bst.h"
 
 //helper functions
-void bsn_init( bsn_t *node, S32 val) 
+void bsn_init(bsn_t *node, S32 val) 
 {
 	node->val = val;
 	node->left = NULL;
@@ -60,7 +60,7 @@ void bsn_init( bsn_t *node, S32 val)
 
 
 //Initialize the binary search tree so that it is empty. Run time: &Theta(1)
-void bst_init( bst_t *tree ) 
+void bst_init(bst_t *tree) 
 {
 tree->root = NULL;
 tree->size = 0;
@@ -70,10 +70,10 @@ tree->size = 0;
 //Note: Remember that you do not have to keep a search-tree structure while you are 
 //destroying the tree. If you maintain the search-tree structure, the run time will be O(n2). 
 //This run time is not required for 2014.
-void bst_destroy( bst_t *tree ) {}
+void bst_destroy(bst_t *tree) {}
 
 //Return the number of nodes in the binary search tree. Run time: &Theta(1)
-size_t bst_size( bst_t *tree ) 
+size_t bst_size(bst_t *tree) 
 {
 	size_t treeSize = 0;
 	treeSize = tree->size;
@@ -84,21 +84,18 @@ size_t bst_size( bst_t *tree )
 //already in the tree (do not add a duplicate into the tree) and true otherwise. 
 //Ideally, such a function should not be implemented using recursion. 
 //See the marking scheme at the end. Run time: O(h)
-bool bst_insert( bst_t *tree, S32 val ) 
+bool bst_insert(bst_t *tree, S32 val) 
 {	
 	bsn_t *p_currNode = tree->root;
 	bsn_t *p_prevNode = p_currNode;
-	bsn_t *p_newNode = (bsn_t *) malloc( sizeof( bsn_t ) );
-	
+	bsn_t *p_newNode = (bsn_t *) malloc(sizeof( bsn_t ));
 	bsn_init(p_newNode, val);
-	
 	//special case: inserting at the root node
 	if(p_currNode == NULL) {
 	tree->root = p_newNode;
 	tree->size = tree->size + 1;	
 	return __TRUE;
 	}
-	
 	//anything but root
 	while (p_currNode != NULL) 
 	{
@@ -121,20 +118,16 @@ bool bst_insert( bst_t *tree, S32 val )
 			p_currNode = p_currNode->right;
 		}
 	}
-	
 	//p_prevNode now points to the last node before the leaf where we are inserting
 	if(p_prevNode->val > val) //insert as left child
 		p_prevNode->left = p_newNode;
 	else //insert as right child
 		p_prevNode->right = p_newNode;
-	
 	tree->size = tree->size + 1;
 	return __TRUE;
 }
-
-
 // Returns the smallest integer in the binary search tree. Return INT_MAX if the tree is empty. Run time: O(h)
-S32 bst_min( bst_t *tree ) 
+S32 bst_min(bst_t *tree) 
 {
 	bsn_t *p_currNode = tree->root;
 	
@@ -146,13 +139,10 @@ S32 bst_min( bst_t *tree )
 		while(p_currNode->left != NULL) 
 		p_currNode = p_currNode->left;
 	}
-	
 	return p_currNode->val;
 }
-
-
 // Returns the largest integer in the binary search tree. Return INT_MIN if the tree is empty. Run time: O(h)
-S32 bst_max( bst_t *tree ) 
+S32 bst_max(bst_t *tree) 
 {
 	bsn_t *p_currNode = tree->root;
 	
@@ -166,7 +156,6 @@ S32 bst_max( bst_t *tree )
 		while(p_currNode->right != NULL) 
 			p_currNode = p_currNode->right;
 	}
-	
 	return p_currNode->val;
 }
 
@@ -175,11 +164,10 @@ S32 bst_max( bst_t *tree )
 //	1. It is a leaf node
 //  2. It has only one child
 //	3. It has two children
-void bst_delete ( bsn_t *p_currNode, bsn_t *p_parentNode)
+void bst_delete (bsn_t *p_currNode, bsn_t *p_parentNode)
 {
 	bsn_t *p_swapNode = NULL;
 	bsn_t *p_swapParent = NULL;
-	
 	// case 1: leaf node, just delete
 	if((p_currNode->right == NULL) && (p_currNode->left == NULL)) 
 	{
@@ -195,7 +183,7 @@ void bst_delete ( bsn_t *p_currNode, bsn_t *p_parentNode)
 	}
 	// case 3: two children, pick one to replace with
 	// balancing was not a parameter, so we will always take max of left branch to replace it with
-	else if ((p_currNode->right != NULL) & (p_currNode->left != NULL)) 
+	else if ((p_currNode->right != NULL) && (p_currNode->left != NULL)) 
 	{
 		p_swapNode = p_currNode->left;
 		p_swapParent = p_currNode;
@@ -206,11 +194,9 @@ void bst_delete ( bsn_t *p_currNode, bsn_t *p_parentNode)
 			p_swapParent = p_swapNode;
 			p_swapNode = p_swapNode->right;
 		}
-		
 		// we now have the max of the subtree. By definition, it can only have one left or no children.
 		// if it is a leaf, we can simply copy the value into the current node and delete the leaf instead
 		p_currNode->val = p_swapNode->val;
-		
 		if(p_swapParent->left == p_swapNode) p_swapParent->left = p_swapNode->left; 
 		else p_swapParent->right = p_swapNode->left;
 		p_currNode = p_swapNode;
@@ -243,7 +229,6 @@ void bst_delete ( bsn_t *p_currNode, bsn_t *p_parentNode)
 			}
 		}
 	}
-	
 	p_currNode->left = NULL;
 	p_currNode->right = NULL;
 	p_currNode->val = 0;
@@ -251,7 +236,7 @@ void bst_delete ( bsn_t *p_currNode, bsn_t *p_parentNode)
 }
 
 // If the object is in the binary search tree, remove it and return true; otherwise, return false and do nothing. Run time: O(h)
-bool bst_erase( bst_t *tree, S32 val ) 
+bool bst_erase(bst_t *tree, S32 val) 
 {
 	bsn_t *p_currNode = tree->root;
 	bsn_t *p_parentNode = p_currNode;
@@ -265,7 +250,7 @@ bool bst_erase( bst_t *tree, S32 val )
 				if((p_currNode->left != NULL) && (p_currNode->right != NULL)) 
 				{ 
 					// can swap in from left as usual
-					bst_delete ( p_currNode, p_parentNode);
+					bst_delete (p_currNode, p_parentNode);
 				}
 				else
 				{
