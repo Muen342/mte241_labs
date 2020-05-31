@@ -22,7 +22,7 @@
 *****************************************************************
 *  1. Made bracket spacing uniform
 *  2. made indenting uniform
-*  3. Made "if" statement bracketing uniform and added brackets to single line "if" statements
+*  3. Made "if" statement bracketing uniform and added brackets to single line "if" statements This is to make it explicit where if statements are
 *  4. added white space in between functions for more readability
 *  5. moved comments to inside else if statements instead of above to make the programming flow more clear such that else if would be on the line after the closing brace of the if statement
 ****************************************************************/
