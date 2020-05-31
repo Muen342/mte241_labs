@@ -20,9 +20,9 @@
 *               justification for the change. You may make changes 
 *               to main.c or bst.c.
 *****************************************************************
-*  1.
+*  1. Made bracket spacing uniform
 *  2.
-*  3. 
+*  3. Made "if" statement bracketing uniform and added brackets to single line "if" statements
 *  4. 
 *  5. 
 ****************************************************************/
@@ -45,14 +45,14 @@
 * 		since
 *  4	Void bst_delete function, line 197, "else if ((p_currNode->right != NULL) & (p_currNode->left != NULL))" changed to "else if ((p_currNode->right != NULL) && (p_currNode->left != NULL))"
 *			since "&" is not the boolean operator rather a bitwise comparator making it a logical error. Visual inspection from stepping through the code.
-*  5. maybe at the end there was a missing } for the while loop, and a } was placed before return __FALSE to close the while loop
+	5. maybe at the end there was a missing } for the while loop, and a } was placed before return __FALSE to close the while loop
 ****************************************************************/
 
 #include <stdio.h>
 #include "bst.h"
 
 //helper functions
-void bsn_init( bsn_t *node, S32 val) 
+void bsn_init(bsn_t *node, S32 val) 
 {
 	node->val = val;
 	node->left = NULL;
@@ -61,7 +61,7 @@ void bsn_init( bsn_t *node, S32 val)
 
 
 //Initialize the binary search tree so that it is empty. Run time: &Theta(1)
-void bst_init( bst_t *tree ) 
+void bst_init(bst_t *tree) 
 {
 tree->root = NULL;
 tree->size = 0;
@@ -71,10 +71,10 @@ tree->size = 0;
 //Note: Remember that you do not have to keep a search-tree structure while you are 
 //destroying the tree. If you maintain the search-tree structure, the run time will be O(n2). 
 //This run time is not required for 2014.
-void bst_destroy( bst_t *tree ) {}
+void bst_destroy(bst_t *tree) {}
 
 //Return the number of nodes in the binary search tree. Run time: &Theta(1)
-size_t bst_size( bst_t *tree ) 
+size_t bst_size(bst_t *tree) 
 {
 	size_t treeSize = 0;
 	treeSize = tree->size;
@@ -85,7 +85,7 @@ size_t bst_size( bst_t *tree )
 //already in the tree (do not add a duplicate into the tree) and true otherwise. 
 //Ideally, such a function should not be implemented using recursion. 
 //See the marking scheme at the end. Run time: O(h)
-bool bst_insert( bst_t *tree, S32 val ) 
+bool bst_insert(bst_t *tree, S32 val) 
 {	
 	bsn_t *p_currNode = tree->root;
 	bsn_t *p_prevNode = p_currNode;
@@ -94,7 +94,8 @@ bool bst_insert( bst_t *tree, S32 val )
 	bsn_init(p_newNode, val);
 	
 	//special case: inserting at the root node
-	if(p_currNode == NULL) {
+	if(p_currNode == NULL)
+	{
 	tree->root = p_newNode;
 	tree->size = tree->size + 1;	
 	return __TRUE;
@@ -125,9 +126,13 @@ bool bst_insert( bst_t *tree, S32 val )
 	
 	//p_prevNode now points to the last node before the leaf where we are inserting
 	if(p_prevNode->val > val) //insert as left child
+	{
 		p_prevNode->left = p_newNode;
+	}
 	else //insert as right child
+	{
 		p_prevNode->right = p_newNode;
+	}
 	
 	tree->size = tree->size + 1;
 	
@@ -136,12 +141,14 @@ bool bst_insert( bst_t *tree, S32 val )
 
 
 // Returns the smallest integer in the binary search tree. Return INT_MAX if the tree is empty. Run time: O(h)
-S32 bst_min( bst_t *tree ) 
+S32 bst_min(bst_t *tree) 
 {
 	bsn_t *p_currNode = tree->root;
 	
 	if(tree->size == 0) 
+	{
 		return INT_MAX;
+	}
 	else 
 	{ 
 		// smallest int will be the left-most bottom node
@@ -177,7 +184,7 @@ S32 bst_max(bst_t *tree)
 //	1. It is a leaf node
 //  2. It has only one child
 //	3. It has two children
-void bst_delete ( bsn_t *p_currNode, bsn_t *p_parentNode)
+void bst_delete (bsn_t *p_currNode, bsn_t *p_parentNode)
 {
 	bsn_t *p_swapNode = NULL;
 	bsn_t *p_swapParent = NULL;
@@ -214,9 +221,13 @@ void bst_delete ( bsn_t *p_currNode, bsn_t *p_parentNode)
 		p_currNode->val = p_swapNode->val;
 		
 		if(p_swapParent->left == p_swapNode)
+		{
 			p_swapParent->left = p_swapNode->left; 
+		}
 		else 
+		{
 			p_swapParent->right = p_swapNode->left;
+		}
 		
 		p_currNode = p_swapNode;
 	}
@@ -256,7 +267,7 @@ void bst_delete ( bsn_t *p_currNode, bsn_t *p_parentNode)
 }
 
 // If the object is in the binary search tree, remove it and return true; otherwise, return false and do nothing. Run time: O(h)
-bool bst_erase( bst_t *tree, S32 val ) 
+bool bst_erase(bst_t *tree, S32 val) 
 {
 	bsn_t *p_currNode = tree->root;
 	bsn_t *p_parentNode = p_currNode;
@@ -270,7 +281,7 @@ bool bst_erase( bst_t *tree, S32 val )
 				if((p_currNode->left != NULL) && (p_currNode->right != NULL)) 
 				{ 
 					// can swap in from left as usual
-					bst_delete ( p_currNode, p_parentNode);
+					bst_delete (p_currNode, p_parentNode);
 				}
 				else
 				{
@@ -309,4 +320,4 @@ bool bst_erase( bst_t *tree, S32 val )
 		}
 	}
 	return __FALSE;
-}//Comment
+}
