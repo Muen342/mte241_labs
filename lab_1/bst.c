@@ -37,13 +37,13 @@
 *               description of how you used the tools to find and
 *               fix it. They can be in main.c or bst.c.
 *****************************************************************
-*  1. Bool bst_erase function, Line 287, code had previously had "+=" which increments value instead of decrements. Changed to "-=".
+*  1. Bool bst_erase function, code had previously had "+=" which increments value instead of decrements. Changed to "-=".
 *			Found through intitial code read through
-*  2. Void bst_delete function, line 206, "p_swapNode = p_swapNode->left;" changed to "p_swapNode = p_swapNode->right;", in a bst the right most node is
+*  2. Void bst_delete function, "p_swapNode = p_swapNode->left;" changed to "p_swapNode = p_swapNode->right;", in a bst the right most node is
 *			the max value in the tree. Used the step into function to check values through transversal and realized it was going to the wrong side.
-*  3. Void bst_delete function, lines 237, line 241, "p_parentNode->left = p_currNode->right;" swapped with "p_parentNode->right = p_currNode->right;"
-* 		since
-*  4	Void bst_delete function, line 197, "else if ((p_currNode->right != NULL) & (p_currNode->left != NULL))" changed to "else if ((p_currNode->right != NULL) && (p_currNode->left != NULL))"
+*  3. Void bst_delete function, "p_parentNode->left = p_currNode->right;" swapped with "p_parentNode->right = p_currNode->right;"
+* 		since the transversal movement after the node is deleted moves in the incorrect direction. Issue was found by stepping into and viewing the mechanic while comparing to bst movement guide.
+*  4. Void bst_delete function, "else if ((p_currNode->right != NULL) & (p_currNode->left != NULL))" changed to "else if ((p_currNode->right != NULL) && (p_currNode->left != NULL))"
 *			since "&" is not the boolean operator rather a bitwise comparator making it a logical error. Visual inspection from stepping through the code.
 	5. maybe at the end there was a missing } for the while loop, and a } was placed before return __FALSE to close the while loop
 ****************************************************************/
