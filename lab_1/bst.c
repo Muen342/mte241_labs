@@ -45,6 +45,7 @@
 * 		since
 *  4	Void bst_delete function, line 197, "else if ((p_currNode->right != NULL) & (p_currNode->left != NULL))" changed to "else if ((p_currNode->right != NULL) && (p_currNode->left != NULL))"
 *			since "&" is not the boolean operator rather a bitwise comparator making it a logical error. Visual inspection from stepping through the code.
+	5. maybe at the end there was a missing } for the while loop, and a } was placed before return __FALSE to close the while loop
 ****************************************************************/
 
 #include <stdio.h>
@@ -287,7 +288,6 @@ bool bst_erase(bst_t *tree, S32 val)
 			p_parentNode = p_currNode;
 			p_currNode = p_currNode->right;
 		}
+	}
 	return __FALSE;
-}
-	return 0;
 }
