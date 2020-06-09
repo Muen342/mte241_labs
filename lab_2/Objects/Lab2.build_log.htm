@@ -1,0 +1,466 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.30.0.0
+Copyright (C) 2020 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: Muen Zhang, None, LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-Lite  Version: 5.30.0.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCLANG\Bin
+C Compiler:      ArmClang.exe V6.14
+Assembler:       Armasm.exe V6.14
+Linker/Locator:  ArmLink.exe V6.14
+Library Manager: ArmAr.exe V6.14
+Hex Converter:   FromElf.exe V6.14
+CPU DLL:         SARMCM3.DLL V5.30.0.0
+Dialog DLL:      DARMP1.DLL V1.27.0.0
+Target DLL:      UL2CM3.DLL V1.163.3.0
+Dialog DLL:      TCM.DLL V1.42.0.0
+ 
+<h2>Project:</h2>
+C:\Users\muen2\Documents\2B\mte241\mte241_labs\lab_2\Lab2.uvprojx
+Project File Date:  06/09/2020
+
+<h2>Output:</h2>
+*** Using Compiler 'V6.14', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
+Rebuild target 'Target 1'
+Retarget.c(46): warning: no previous extern declaration for non-static variable 'uart_init_called' [-Wmissing-variable-declarations]
+volatile uint8_t uart_init_called = 0;
+                 ^
+Retarget.c(46): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+volatile uint8_t uart_init_called = 0;
+         ^
+Retarget.c(85): warning: implicit conversion loses integer precision: 'int' to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
+                        UARTSendChar(PORT_NUM, c);
+                        ~~~~~~~~~~~~           ^
+Retarget.c(52): warning: no previous prototype for function 'sendchar' [-Wmissing-prototypes]
+int sendchar( int c ) {
+    ^
+Retarget.c(52): note: declare 'static' if the function is not intended to be used outside of this translation unit
+int sendchar( int c ) {
+^
+static 
+Retarget.c(99): warning: no previous prototype for function 'getkey' [-Wmissing-prototypes]
+int getkey( void ) {
+    ^
+Retarget.c(99): note: declare 'static' if the function is not intended to be used outside of this translation unit
+int getkey( void ) {
+^
+static 
+Retarget.c(119): error: redefinition of '__FILE'
+struct __FILE { int handle; /* Add whatever you need here */ };
+       ^
+C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h(119): note: previous definition is here
+struct __FILE {
+       ^
+Retarget.c(124): warning: unused parameter 'f' [-Wunused-parameter]
+int fputc( int ch, FILE *f ) {
+                         ^
+Retarget.c(130): warning: unused parameter 'f' [-Wunused-parameter]
+int fgetc( FILE *f ) {
+                 ^
+Retarget.c(139): warning: unused parameter 'f' [-Wunused-parameter]
+int ferror( FILE *f ) {
+                  ^
+Retarget.c(146): warning: no previous prototype for function '_ttywrch' [-Wmissing-prototypes]
+void _ttywrch( int ch ) {
+     ^
+Retarget.c(146): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void _ttywrch( int ch ) {
+^
+static 
+Retarget.c(152): warning: unused parameter 'return_code' [-Wunused-parameter]
+void _sys_exit( int return_code ) {
+                    ^
+Retarget.c(152): warning: no previous prototype for function '_sys_exit' [-Wmissing-prototypes]
+void _sys_exit( int return_code ) {
+     ^
+Retarget.c(152): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void _sys_exit( int return_code ) {
+^
+static 
+10 warnings and 1 error generated.
+compiling Retarget.c...
+assembling startup_LPC17xx.s...
+uart.c(21): warning: non-portable path to file '"LPC17xx.h"'; specified path differs in case from file name on disk [-Wnonportable-include-path]
+#include "lpc17xx.h"
+         ^~~~~~~~~~~
+         "LPC17xx.h"
+uart.c(21): warning: In file included from...
+C:/Users/muen2/AppData/Local/Arm/Packs/Keil/LPC1700_DFP/2.6.0/Device/Include\lpc17xx.h(200): warning: anonymous structs are a C11 extension [-Wc11-extensions]
+    struct {
+    ^
+C:/Users/muen2/AppData/Local/Arm/Packs/Keil/LPC1700_DFP/2.6.0/Device/Include\lpc17xx.h(204): warning: anonymous structs are a C11 extension [-Wc11-extensions]
+    struct {
+    ^
+C:/Users/muen2/AppData/Local/Arm/Packs/Keil/LPC1700_DFP/2.6.0/Device/Include\lpc17xx.h(198): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/muen2/AppData/Local/Arm/Packs/Keil/LPC1700_DFP/2.6.0/Device/Include\lpc17xx.h(214): warning: anonymous structs are a C11 extension [-Wc11-extensions]
+    struct {
+    ^
+C:/Users/muen2/AppData/Local/Arm/Packs/Keil/LPC1700_DFP/2.6.0/Device/Include\lpc17xx.h(218): warning: anonymous structs are a C11 extension [-Wc11-extensions]
+    struct {
+    ^
+C:/Users/muen2/AppData/Local/Arm/Packs/Keil/LPC1700_DFP/2.6.0/Device/Include\lpc17xx.h(212): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/muen2/AppData/Local/Arm/Packs/Keil/LPC1700_DFP/2.6.0/Device/Include\lpc17xx.h(227): warning: anonymous structs are a C11 extension [-Wc11-extensions]
+    struct {
+    ^
+C:/Users/muen2/AppData/Local/Arm/Packs/Keil/LPC1700_DFP/2.6.0/Device/Include\lpc17xx.h(231): warning: anonymous structs are a C11 extension [-Wc11-extensions]
+    struct {
+    ^
+C:/Users/muen2/AppData/Local/Arm/Packs/Keil/LPC1700_DFP/2.6.0/Device/Include\lpc17xx.h(225): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/muen2/AppData/Local/Arm/Packs/Keil/LPC1700_DFP/2.6.0/Device/Include\lpc17xx.h(240): warning: anonymous structs are a C11 extension [-Wc11-extensions]
+    struct {
+    ^
+C:/Users/muen2/AppData/Local/Arm/Packs/Keil/LPC1700_DFP/2.6.0/Device/Include\lpc17xx.h(244): warning: anonymous structs are a C11 extension [-Wc11-extensions]
+    struct {
+    ^
+C:/Users/muen2/AppData/Local/Arm/Packs/Keil/LPC1700_DFP/2.6.0/Device/Include\lpc17xx.h(238): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/muen2/AppData/Local/Arm/Packs/Keil/LPC1700_DFP/2.6.0/Device/Include\lpc17xx.h(253): warning: anonymous structs are a C11 extension [-Wc11-extensions]
+    struct {
+    ^
+C:/Users/muen2/AppData/Local/Arm/Packs/Keil/LPC1700_DFP/2.6.0/Device/Include\lpc17xx.h(257): warning: anonymous structs are a C11 extension [-Wc11-extensions]
+    struct {
+    ^
+C:/Users/muen2/AppData/Local/Arm/Packs/Keil/LPC1700_DFP/2.6.0/Device/Include\lpc17xx.h(251): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/muen2/AppData/Local/Arm/Packs/Keil/LPC1700_DFP/2.6.0/Device/Include\lpc17xx.h(339): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/muen2/AppData/Local/Arm/Packs/Keil/LPC1700_DFP/2.6.0/Device/Include\lpc17xx.h(345): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/muen2/AppData/Local/Arm/Packs/Keil/LPC1700_DFP/2.6.0/Device/Include\lpc17xx.h(349): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/muen2/AppData/Local/Arm/Packs/Keil/LPC1700_DFP/2.6.0/Device/Include\lpc17xx.h(370): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/muen2/AppData/Local/Arm/Packs/Keil/LPC1700_DFP/2.6.0/Device/Include\lpc17xx.h(376): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/muen2/AppData/Local/Arm/Packs/Keil/LPC1700_DFP/2.6.0/Device/Include\lpc17xx.h(380): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/muen2/AppData/Local/Arm/Packs/Keil/LPC1700_DFP/2.6.0/Device/Include\lpc17xx.h(829): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/muen2/AppData/Local/Arm/Packs/Keil/LPC1700_DFP/2.6.0/Device/Include\lpc17xx.h(839): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/muen2/AppData/Local/Arm/Packs/Keil/LPC1700_DFP/2.6.0/Device/Include\lpc17xx.h(843): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+uart.c(30): warning: no previous extern declaration for non-static variable 'UART0TxEmpty' [-Wmissing-variable-declarations]
+volatile uint8_t UART0TxEmpty = 1, UART1TxEmpty = 1;
+                 ^
+uart.c(30): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+volatile uint8_t UART0TxEmpty = 1, UART1TxEmpty = 1;
+         ^
+uart.c(30): warning: no previous extern declaration for non-static variable 'UART1TxEmpty' [-Wmissing-variable-declarations]
+volatile uint8_t UART0TxEmpty = 1, UART1TxEmpty = 1;
+                                   ^
+uart.c(30): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+volatile uint8_t UART0TxEmpty = 1, UART1TxEmpty = 1;
+         ^
+uart.c(32): warning: no previous extern declaration for non-static variable 'UART0Count' [-Wmissing-variable-declarations]
+volatile uint32_t UART0Count = 0, UART1Count = 0;
+                  ^
+uart.c(32): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+volatile uint32_t UART0Count = 0, UART1Count = 0;
+         ^
+uart.c(32): warning: no previous extern declaration for non-static variable 'UART1Count' [-Wmissing-variable-declarations]
+volatile uint32_t UART0Count = 0, UART1Count = 0;
+                                  ^
+uart.c(32): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+volatile uint32_t UART0Count = 0, UART1Count = 0;
+         ^
+uart.c(40): warning: no previous extern declaration for non-static variable 'i' [-Wmissing-variable-declarations]
+volatile int i = 0;
+             ^
+uart.c(40): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+volatile int i = 0;
+         ^
+uart.c(42): warning: no previous prototype for function 'Free' [-Wmissing-prototypes]
+void Free(volatile uint8_t *tbl){
+     ^
+uart.c(42): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void Free(volatile uint8_t *tbl){
+^
+static 
+uart.c(46): warning: no previous prototype for function 'Lock' [-Wmissing-prototypes]
+uint8_t Lock(volatile uint8_t *tbl){
+        ^
+uart.c(46): note: declare 'static' if the function is not intended to be used outside of this translation unit
+uint8_t Lock(volatile uint8_t *tbl){
+^
+static 
+uart.c(56): warning: no previous prototype for function 'LockRcv' [-Wmissing-prototypes]
+uint8_t LockRcv(uint8_t portNum){
+        ^
+uart.c(56): note: declare 'static' if the function is not intended to be used outside of this translation unit
+uint8_t LockRcv(uint8_t portNum){
+^
+static 
+uart.c(62): warning: no previous prototype for function 'LockSnd' [-Wmissing-prototypes]
+uint8_t LockSnd(uint8_t portNum){
+        ^
+uart.c(62): note: declare 'static' if the function is not intended to be used outside of this translation unit
+uint8_t LockSnd(uint8_t portNum){
+^
+static 
+uart.c(68): warning: no previous prototype for function 'FreeRcv' [-Wmissing-prototypes]
+void FreeRcv(uint8_t portNum){
+     ^
+uart.c(68): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void FreeRcv(uint8_t portNum){
+^
+static 
+uart.c(74): warning: no previous prototype for function 'FreeSnd' [-Wmissing-prototypes]
+void FreeSnd(uint8_t portNum){
+     ^
+uart.c(74): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void FreeSnd(uint8_t portNum){
+^
+static 
+uart.c(21): warning: In file included from...
+C:/Users/muen2/AppData/Local/Arm/Packs/Keil/LPC1700_DFP/2.6.0/Device/Include\lpc17xx.h(337): warning: padding size of 'LPC_UART_TypeDef' with 3 bytes to alignment boundary [-Wpadded]
+typedef struct
+        ^
+uart.c(94): warning: implicit conversion loses integer precision: 'const volatile uint32_t' (aka 'const volatile unsigned int') to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
+        IIRValue = LPC_UART0->IIR;
+                 ~ ~~~~~~~~~~~^~~
+uart.c(21): warning: In file included from...
+C:/Users/muen2/AppData/Local/Arm/Packs/Keil/LPC1700_DFP/2.6.0/Device/Include\lpc17xx.h(368): warning: padding size of 'LPC_UART1_TypeDef' with 3 bytes to alignment boundary [-Wpadded]
+typedef struct
+        ^
+uart.c(142): warning: implicit conversion loses integer precision: 'const volatile uint32_t' (aka 'const volatile unsigned int') to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
+        IIRValue = LPC_UART1->IIR;
+                 ~ ~~~~~~~~~~~^~~
+uart.c(177): warning: no previous prototype for function 'getFrequency' [-Wmissing-prototypes]
+uint32_t getFrequency(uint32_t clk_slct){
+         ^
+uart.c(177): note: declare 'static' if the function is not intended to be used outside of this translation unit
+uint32_t getFrequency(uint32_t clk_slct){
+^
+static 
+uart.c(220): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+                LPC_PINCON->PINSEL0 &= ~0x000000F0;
+                                    ~~ ^~~~~~~~~~~
+uart.c(229): warning: implicit conversion loses integer precision: 'unsigned int' to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
+                LPC_UART0->DLM = Fdiv / 256;                                    
+                               ~ ~~~~~^~~~~
+uart.c(230): warning: implicit conversion loses integer precision: 'unsigned int' to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
+                LPC_UART0->DLL = Fdiv % 256;
+                               ~ ~~~~~^~~~~
+uart.c(246): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+                LPC_PINCON->PINSEL4 &= ~0x0000000F;
+                                    ~~ ^~~~~~~~~~~
+uart.c(257): warning: implicit conversion loses integer precision: 'unsigned int' to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
+                LPC_UART1->DLM = Fdiv / 256;                                    
+                               ~ ~~~~~^~~~~
+uart.c(258): warning: implicit conversion loses integer precision: 'unsigned int' to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
+                LPC_UART1->DLL = Fdiv % 256;
+                               ~ ~~~~~^~~~~
+uart.c(304): warning: implicit conversion loses integer precision: 'uint32_t' (aka 'unsigned int') to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
+        while( LockSnd(portNum));
+               ~~~~~~~ ^~~~~~~
+uart.c(315): warning: implicit conversion loses integer precision: 'uint32_t' (aka 'unsigned int') to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
+        FreeSnd(portNum);
+        ~~~~~~~ ^~~~~~~
+uart.c(318): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+        LPC_UART->IER &= ~IER_THRE;
+                      ~~ ^~~~~~~~~
+uart.c(354): warning: declaration shadows a variable in the global scope [-Wshadow]
+        uint32_t rcvd_len, i;
+                           ^
+uart.c(40): note: previous declaration is here
+volatile int i = 0;
+             ^
+uart.c(376): warning: implicit conversion loses integer precision: 'uint32_t' (aka 'unsigned int') to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
+        while(LockRcv(portNum));
+              ~~~~~~~ ^~~~~~~
+uart.c(379): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+        LPC_UART->IER &= ~IER_RBR;                      /* Disable RBR */
+                      ~~ ^~~~~~~~
+uart.c(387): warning: implicit conversion loses integer precision: 'uint32_t' (aka 'unsigned int') to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
+        FreeRcv(portNum);
+        ~~~~~~~ ^~~~~~~
+uart.c(347): warning: unused parameter 'Length' [-Wunused-parameter]
+uint32_t UARTRecieve( uint32_t portNum, uint8_t *BufferPtr, uint32_t Length )
+                                                                     ^
+uart.c(29): warning: no previous extern declaration for non-static variable 'UART0Status' [-Wmissing-variable-declarations]
+volatile uint32_t UART0Status, UART1Status;
+                  ^
+uart.c(29): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+volatile uint32_t UART0Status, UART1Status;
+         ^
+uart.c(29): warning: no previous extern declaration for non-static variable 'UART1Status' [-Wmissing-variable-declarations]
+volatile uint32_t UART0Status, UART1Status;
+                               ^
+uart.c(29): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+volatile uint32_t UART0Status, UART1Status;
+         ^
+uart.c(31): warning: no previous extern declaration for non-static variable 'UART0Buffer' [-Wmissing-variable-declarations]
+volatile uint8_t UART0Buffer[BUFSIZE], UART1Buffer[BUFSIZE];
+                 ^
+uart.c(31): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+volatile uint8_t UART0Buffer[BUFSIZE], UART1Buffer[BUFSIZE];
+         ^
+uart.c(31): warning: no previous extern declaration for non-static variable 'UART1Buffer' [-Wmissing-variable-declarations]
+volatile uint8_t UART0Buffer[BUFSIZE], UART1Buffer[BUFSIZE];
+                                       ^
+uart.c(31): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+volatile uint8_t UART0Buffer[BUFSIZE], UART1Buffer[BUFSIZE];
+         ^
+uart.c(34): warning: no previous extern declaration for non-static variable 'RcvLock0' [-Wmissing-variable-declarations]
+volatile uint8_t RcvLock0; 
+                 ^
+uart.c(34): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+volatile uint8_t RcvLock0; 
+         ^
+uart.c(35): warning: no previous extern declaration for non-static variable 'SndLock0' [-Wmissing-variable-declarations]
+volatile uint8_t SndLock0; 
+                 ^
+uart.c(35): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+volatile uint8_t SndLock0; 
+         ^
+uart.c(37): warning: no previous extern declaration for non-static variable 'RcvLock1' [-Wmissing-variable-declarations]
+volatile uint8_t RcvLock1; 
+                 ^
+uart.c(37): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+volatile uint8_t RcvLock1; 
+         ^
+uart.c(38): warning: no previous extern declaration for non-static variable 'SndLock1' [-Wmissing-variable-declarations]
+volatile uint8_t SndLock1; 
+                 ^
+uart.c(38): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+volatile uint8_t SndLock1; 
+         ^
+63 warnings generated.
+compiling uart.c...
+RTE/Device/LPC1768/system_LPC17xx.c(36): warning: In file included from...
+C:/Users/muen2/AppData/Local/Arm/Packs/Keil/LPC1700_DFP/2.6.0/Device/Include\LPC17xx.h(200): warning: anonymous structs are a C11 extension [-Wc11-extensions]
+    struct {
+    ^
+C:/Users/muen2/AppData/Local/Arm/Packs/Keil/LPC1700_DFP/2.6.0/Device/Include\LPC17xx.h(204): warning: anonymous structs are a C11 extension [-Wc11-extensions]
+    struct {
+    ^
+C:/Users/muen2/AppData/Local/Arm/Packs/Keil/LPC1700_DFP/2.6.0/Device/Include\LPC17xx.h(198): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/muen2/AppData/Local/Arm/Packs/Keil/LPC1700_DFP/2.6.0/Device/Include\LPC17xx.h(214): warning: anonymous structs are a C11 extension [-Wc11-extensions]
+    struct {
+    ^
+C:/Users/muen2/AppData/Local/Arm/Packs/Keil/LPC1700_DFP/2.6.0/Device/Include\LPC17xx.h(218): warning: anonymous structs are a C11 extension [-Wc11-extensions]
+    struct {
+    ^
+C:/Users/muen2/AppData/Local/Arm/Packs/Keil/LPC1700_DFP/2.6.0/Device/Include\LPC17xx.h(212): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/muen2/AppData/Local/Arm/Packs/Keil/LPC1700_DFP/2.6.0/Device/Include\LPC17xx.h(227): warning: anonymous structs are a C11 extension [-Wc11-extensions]
+    struct {
+    ^
+C:/Users/muen2/AppData/Local/Arm/Packs/Keil/LPC1700_DFP/2.6.0/Device/Include\LPC17xx.h(231): warning: anonymous structs are a C11 extension [-Wc11-extensions]
+    struct {
+    ^
+C:/Users/muen2/AppData/Local/Arm/Packs/Keil/LPC1700_DFP/2.6.0/Device/Include\LPC17xx.h(225): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/muen2/AppData/Local/Arm/Packs/Keil/LPC1700_DFP/2.6.0/Device/Include\LPC17xx.h(240): warning: anonymous structs are a C11 extension [-Wc11-extensions]
+    struct {
+    ^
+C:/Users/muen2/AppData/Local/Arm/Packs/Keil/LPC1700_DFP/2.6.0/Device/Include\LPC17xx.h(244): warning: anonymous structs are a C11 extension [-Wc11-extensions]
+    struct {
+    ^
+C:/Users/muen2/AppData/Local/Arm/Packs/Keil/LPC1700_DFP/2.6.0/Device/Include\LPC17xx.h(238): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/muen2/AppData/Local/Arm/Packs/Keil/LPC1700_DFP/2.6.0/Device/Include\LPC17xx.h(253): warning: anonymous structs are a C11 extension [-Wc11-extensions]
+    struct {
+    ^
+C:/Users/muen2/AppData/Local/Arm/Packs/Keil/LPC1700_DFP/2.6.0/Device/Include\LPC17xx.h(257): warning: anonymous structs are a C11 extension [-Wc11-extensions]
+    struct {
+    ^
+C:/Users/muen2/AppData/Local/Arm/Packs/Keil/LPC1700_DFP/2.6.0/Device/Include\LPC17xx.h(251): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/muen2/AppData/Local/Arm/Packs/Keil/LPC1700_DFP/2.6.0/Device/Include\LPC17xx.h(339): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/muen2/AppData/Local/Arm/Packs/Keil/LPC1700_DFP/2.6.0/Device/Include\LPC17xx.h(345): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/muen2/AppData/Local/Arm/Packs/Keil/LPC1700_DFP/2.6.0/Device/Include\LPC17xx.h(349): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/muen2/AppData/Local/Arm/Packs/Keil/LPC1700_DFP/2.6.0/Device/Include\LPC17xx.h(370): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/muen2/AppData/Local/Arm/Packs/Keil/LPC1700_DFP/2.6.0/Device/Include\LPC17xx.h(376): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/muen2/AppData/Local/Arm/Packs/Keil/LPC1700_DFP/2.6.0/Device/Include\LPC17xx.h(380): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/muen2/AppData/Local/Arm/Packs/Keil/LPC1700_DFP/2.6.0/Device/Include\LPC17xx.h(829): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/muen2/AppData/Local/Arm/Packs/Keil/LPC1700_DFP/2.6.0/Device/Include\LPC17xx.h(839): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+C:/Users/muen2/AppData/Local/Arm/Packs/Keil/LPC1700_DFP/2.6.0/Device/Include\LPC17xx.h(843): warning: anonymous unions are a C11 extension [-Wc11-extensions]
+  union {
+  ^
+RTE/Device/LPC1768/system_LPC17xx.c(539): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+  LPC_SC->FLASHCFG  = (LPC_SC->FLASHCFG & ~0x0000F000) | FLASHCFG_Val;
+                                        ~ ^~~~~~~~~~~
+25 warnings generated.
+compiling system_LPC17xx.c...
+".\Objects\Lab2.axf" - 1 Error(s), 98 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.5.7.0.pack
+                ARM.CMSIS.5.7.0
+                CMSIS (Cortex Microcontroller Software Interface Standard)
+   * Component: CORE Version: 5.4.0
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.LPC1700_DFP.2.6.0.pack
+                Keil.LPC1700_DFP.2.6.0
+                NXP LPC1700 Series Device Support, Drivers and Examples for MCB1700 and LPC1788-32
+   * Component: Startup Version: 1.0.0
+
+<h2>Collection of Component include folders:</h2>
+  .\RTE\Device\LPC1768
+  .\RTE\_Target_1
+  C:\Users\muen2\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include
+  C:\Users\muen2\AppData\Local\Arm\Packs\Keil\LPC1700_DFP\2.6.0\Device\Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:5.4.0
+
+   * Component: Keil::Device:Startup:1.0.0
+      Include file:  Device\Include\LPC17xx.h
+      Source file:   Device\Source\ARM\startup_LPC17xx.s
+      Source file:   Device\Source\system_LPC17xx.c
+      Include file:  RTE_Driver\Config\RTE_Device.h
+Target not created.
+Build Time Elapsed:  00:00:03
+</pre>
+</body>
+</html>

@@ -249,8 +249,7 @@ void bst_delete (bsn_t *p_currNode, bsn_t *p_parentNode)
 		
 		p_currNode = p_swapNode;
 	}
-	// case 2: one child, replace with child, delete child
-	else
+	else  // case 2: one child, replace with child, delete child
 	{
 		if(p_currNode->left != NULL) //child is to the left
 		{
