@@ -1,5 +1,4 @@
 --cpu Cortex-M3
-".\objects\bst.o"
 ".\objects\p1_main.o"
 ".\objects\retarget.o"
 ".\objects\uart.o"

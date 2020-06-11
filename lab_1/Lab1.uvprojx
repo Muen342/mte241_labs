@@ -384,11 +384,6 @@
           <GroupName>Source Group 1</GroupName>
           <Files>
             <File>
-              <FileName>bst.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\bst.c</FilePath>
-            </File>
-            <File>
               <FileName>p1_main.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\p1_main.c</FilePath>
