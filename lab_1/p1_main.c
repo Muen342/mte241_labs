@@ -6,21 +6,22 @@
 #include <LPC17xx.h>
 #include "stdio.h"
 #include "uart.h"
-#define part_1
-void delay(void);
+#define part_4
 int main( void ) 
 {
 	#ifdef part_1
-	LPC_GPIO2->FIODIR = 0xF; // Configure pins 0 to 3 on Port 0 as Output
-	
-	while(1)
-	{
-		LPC_GPIO2->FIOSET = 0xF; // Output HIGH
-		delay();
-		LPC_GPIO2->FIOCLR = 0xF; // Output LOW
-		delay();
+	LPC_GPIO2->FIODIR = 0x1f<<2; // Configure pins 2 to 6 on Port 0 as Output
+	LPC_GPIO1->FIODIR=0xf<<28;//configure pin 28-31 as output led
+	while(1){
+		if((LPC_GPIO2->FIOPIN & (1<<10)) == 0){
+			LPC_GPIO2->FIOSET = 1 << 6; // Output HIGH
+		}
+		else{
+			LPC_GPIO2->FIOCLR = 1 << 6; // Output LOW
+		}
 	}
-	return 0; // normally this wont execute
+	
+	
 	#endif
 	
 	#ifdef part_2
@@ -32,14 +33,6 @@ int main( void )
 	#endif
 	
 	#ifdef part_4
-	LPC_SC->PCONP |= 1 << 5;
+	LPC_SC->PCONP |= 1 << 12;
 	#endif
-}
-void delay(void) //Hardcoded delay function
-{
-	int count,i=0;
-	for(count=0; count < 6000000; count++) // You can edit this as per your needs
-	{
-		i++; // something needs to be here else compiler will remove the for loop!
-	}
 }
