@@ -24,12 +24,87 @@ int main( void )
 	
 	#endif
 	
-	#ifdef part_2
-	printf("2");
+	##ifdef part_2
+	while (1) {
+		if((LPC_GPIO1->FIOPIN & (1 << 20)) == 0) //  PRESSED
+		{
+			if (((LPC_GPIO1->FIOPIN & (1 << 23)) == 0)) // NORTH
+				printf("North, Pressed\n");
+			else if (((LPC_GPIO1->FIOPIN & (1 << 24)) == 0)) // EAST
+				printf("East, Pressed\n");
+			else if (((LPC_GPIO1->FIOPIN & (1 << 25)) == 0)) // SOUTH
+				printf("South, Pressed\n");
+			else if (((LPC_GPIO1->FIOPIN & (1 << 26)) == 0)) // WEST
+				printf("West, Pressed\n"); 
+			else
+			printf("Pressed\n"); // PRESSED, NO JOYSTICK MOVEMENT 
+		}
+		else if ((LPC_GPIO1->FIOPIN & (1 << 20)) != 0)
+		{
+			if (((LPC_GPIO1->FIOPIN & (1 << 23)) == 0)) // NORTH
+				printf("North, Not Pressed\n");
+			else if (((LPC_GPIO1->FIOPIN & (1 << 24)) == 0)) // EAST
+				printf("East, Not Pressed\n");
+			else if (((LPC_GPIO1->FIOPIN & (1 << 25)) == 0)) // SOUTH
+				printf("South, Not Pressed\n");
+			else if (((LPC_GPIO1->FIOPIN & (1 << 26)) == 0)) // WEST
+				printf("West, Not Pressed\n"); 
+			else
+			printf(" Not Pressed\n"); // NOT PRESSED, NO JOYSTICK MOVEMENT
+		}
+	}
 	#endif
 	
 	#ifdef part_3
-	printf("3");
+	// CLEAR LED OUPUTS 
+	LPC_GPIO1->FIOCLR = 1 << 28;
+	LPC_GPIO1->FIOCLR = 1 << 29;
+	LPC_GPIO1->FIOCLR = 1u << 31;
+	LPC_GPIO2->FIOCLR = 1 << 2;
+	LPC_GPIO2->FIOCLR = 1 << 3;
+	LPC_GPIO2->FIOCLR = 1 << 4;
+	LPC_GPIO2->FIOCLR = 1 << 5;
+	LPC_GPIO2->FIOCLR = 1 << 6;
+	while(1) {
+		int inputVal; // INPUT 
+		char input[3];
+		printf("enter value\n");
+		scanf("%s", input);
+			// SET LED OUPUTS
+	LPC_GPIO1->FIODIR |= 1 << 28;
+	LPC_GPIO1->FIODIR |= 1 << 29;
+	LPC_GPIO1->FIODIR |= 1u << 31;
+	LPC_GPIO2->FIODIR |= 1 << 2;
+	LPC_GPIO2->FIODIR |= 1 << 3;
+	LPC_GPIO2->FIODIR |= 1 << 4;
+	LPC_GPIO2->FIODIR |= 1 << 5;
+	LPC_GPIO2->FIODIR |= 1 << 6;
+	// CLEAR LED OUPUTS 
+	LPC_GPIO1->FIOCLR = 1 << 28;
+	LPC_GPIO1->FIOCLR = 1 << 29;
+	LPC_GPIO1->FIOCLR = 1u << 31;
+	LPC_GPIO2->FIOCLR = 1 << 2;
+	LPC_GPIO2->FIOCLR = 1 << 3;
+	LPC_GPIO2->FIOCLR = 1 << 4;
+	LPC_GPIO2->FIOCLR = 1 << 5;
+	LPC_GPIO2->FIOCLR = 1 << 6;
+	int output[] = {0,0,0,0,0,0,0,0};
+		int count = 0; // OUTPUT TO LEDS AND COUNTER
+		inputVal = atoi(input);
+		while (inputVal > 0) {
+			output[count] = inputVal % 2;
+			inputVal = inputVal/2;
+			count++;
+		}
+		LPC_GPIO1->FIOSET |= (output[2] << 31);
+		for (int x = 0; x < 2; x++) { // LED FUNCTION AT 28, 29
+			LPC_GPIO1->FIOSET |= (output[x] << (28+x));
+		}
+		LPC_GPIO1->FIOSET |= (output[2] << 31);
+		for (int x = 0; x < 7; x++) {	// LED FUNCTION AT 28, 29
+			LPC_GPIO1->FIOSET |= (output[x+1] << x); // LED FUNCTION AT , 2,3,4,5,6
+		}
+	}
 	#endif
 	
 	#ifdef part_4
