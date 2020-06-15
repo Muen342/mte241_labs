@@ -113,8 +113,8 @@ int main( void )
 	LPC_PINCON->PINSEL1 |= (0x01<<18);//set it as adc ad0.2
 	LPC_ADC->ADCR |= 4 << 8;//divide by 4+1 so 5 mhz
 	LPC_ADC->ADCR |= 1 <<21;//enable circuit
-	LPC_ADC->ADCR |= 1 << 2;
-	LPC_ADC -> ADCR &= ~1;
+	LPC_ADC->ADCR |= 1 << 2;//sets channel of input
+	LPC_ADC -> ADCR &= ~1;//bit 1 was on for some reason
 	float val = 0;
 	while(1){
 		LPC_ADC->ADCR |= 1 <<24;//start conversion
