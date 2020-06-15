@@ -7,7 +7,9 @@
 #include "stdio.h"
 #include "uart.h"
 #include "stdlib.h"
-#define part_4
+#include "stdbool.h"
+#include "ctype.h"
+#define part_3
 int main( void ) 
 {
 	#ifdef part_1
@@ -15,10 +17,10 @@ int main( void )
 	LPC_GPIO1->FIODIR=0xf<<28;//configure pin 28-31 as output led and set to low
 	while(1){
 		if((LPC_GPIO2->FIOPIN & (1<<10)) == 0){
-			LPC_GPIO2->FIOSET = 1 << 6; // Output HIGH
+			LPC_GPIO1->FIOSET = 1 << 28; // Output HIGH
 		}
 		else{
-			LPC_GPIO2->FIOCLR = 1 << 6; // Output LOW
+			LPC_GPIO1->FIOCLR = 1 << 28; // Output LOW
 		}
 	}
 	
@@ -38,7 +40,7 @@ int main( void )
 			else if (((LPC_GPIO1->FIOPIN & (1 << 26)) == 0)) // WEST
 				printf("West, Pressed\n"); 
 			else
-			printf("Pressed\n"); // PRESSED, NO JOYSTICK MOVEMENT 
+			printf("Pressed centered\n"); // PRESSED, NO JOYSTICK MOVEMENT 
 		}
 		else if ((LPC_GPIO1->FIOPIN & (1 << 20)) != 0)
 		{
@@ -51,59 +53,59 @@ int main( void )
 			else if (((LPC_GPIO1->FIOPIN & (1 << 26)) == 0)) // WEST
 				printf("West, Not Pressed\n"); 
 			else
-			printf(" Not Pressed\n"); // NOT PRESSED, NO JOYSTICK MOVEMENT
+			printf(" Not Pressed centered\n"); // NOT PRESSED, NO JOYSTICK MOVEMENT
 		}
 	}
 	#endif
 	
 	#ifdef part_3
 	// CLEAR LED OUPUTS 
-	LPC_GPIO1->FIOCLR = 1 << 28;
-	LPC_GPIO1->FIOCLR = 1 << 29;
-	LPC_GPIO1->FIOCLR = 1u << 31;
-	LPC_GPIO2->FIOCLR = 1 << 2;
-	LPC_GPIO2->FIOCLR = 1 << 3;
-	LPC_GPIO2->FIOCLR = 1 << 4;
-	LPC_GPIO2->FIOCLR = 1 << 5;
-	LPC_GPIO2->FIOCLR = 1 << 6;
+	LPC_GPIO2->FIODIR = 0x1f<<2; // Configure pins 2 to 6 on Port 0 as Output
+	LPC_GPIO1->FIODIR=0xf<<28;//configure pin 28-31 as output led and set to low
 	while(1) {
 		int inputVal; // INPUT 
 		char input[3];
 		printf("enter value\n");
 		scanf("%s", input);
-			// SET LED OUPUTS
-	LPC_GPIO1->FIODIR |= 1 << 28;
-	LPC_GPIO1->FIODIR |= 1 << 29;
-	LPC_GPIO1->FIODIR |= 1u << 31;
-	LPC_GPIO2->FIODIR |= 1 << 2;
-	LPC_GPIO2->FIODIR |= 1 << 3;
-	LPC_GPIO2->FIODIR |= 1 << 4;
-	LPC_GPIO2->FIODIR |= 1 << 5;
-	LPC_GPIO2->FIODIR |= 1 << 6;
-	// CLEAR LED OUPUTS 
-	LPC_GPIO1->FIOCLR = 1 << 28;
-	LPC_GPIO1->FIOCLR = 1 << 29;
-	LPC_GPIO1->FIOCLR = 1u << 31;
-	LPC_GPIO2->FIOCLR = 1 << 2;
-	LPC_GPIO2->FIOCLR = 1 << 3;
-	LPC_GPIO2->FIOCLR = 1 << 4;
-	LPC_GPIO2->FIOCLR = 1 << 5;
-	LPC_GPIO2->FIOCLR = 1 << 6;
-	int output[] = {0,0,0,0,0,0,0,0};
+		// CLEAR LED OUPUTS 
+		LPC_GPIO1->FIOCLR = 1 << 28;
+		LPC_GPIO1->FIOCLR = 1 << 29;
+		LPC_GPIO1->FIOCLR = 1u << 31;
+		LPC_GPIO2->FIOCLR = 1 << 2;
+		LPC_GPIO2->FIOCLR = 1 << 3;
+		LPC_GPIO2->FIOCLR = 1 << 4;
+		LPC_GPIO2->FIOCLR = 1 << 5;
+		LPC_GPIO2->FIOCLR = 1 << 6;
+		int output[] = {0,0,0,0,0,0,0,0};
 		int count = 0; // OUTPUT TO LEDS AND COUNTER
 		inputVal = atoi(input);
-		while (inputVal > 0) {
-			output[count] = inputVal % 2;
-			inputVal = inputVal/2;
-			count++;
+		bool valid = true;
+		for(int i = 0; i < sizeof(input) / sizeof(input[0]); i++){
+			if(isdigit(input[i])){}
+			else{
+				if(input[i] == '\0' || input[i] == NULL){}
+				else{
+					valid = false;
+				}
+			}
 		}
-		LPC_GPIO1->FIOSET |= (output[2] << 31);
-		for (int x = 0; x < 2; x++) { // LED FUNCTION AT 28, 29
-			LPC_GPIO1->FIOSET |= (output[x] << (28+x));
+		if(valid && inputVal <= 255){
+			while (inputVal > 0) {
+				output[count] = inputVal % 2;
+				inputVal = inputVal/2;
+				count++;
+			}
+			LPC_GPIO1->FIOSET |= (output[2] << 31);
+			for (int x = 0; x < 2; x++) { // LED FUNCTION AT 28, 29
+				LPC_GPIO1->FIOSET |= (output[x] << (28+x));
+			}
+			LPC_GPIO1->FIOSET |= (output[2] << 31);
+			for (int x = 2; x < 7; x++) {	
+				LPC_GPIO2->FIOSET |= (output[x+1] << x); // LED FUNCTION AT , 2,3,4,5,6
+			}
 		}
-		LPC_GPIO1->FIOSET |= (output[2] << 31);
-		for (int x = 2; x < 7; x++) {	
-			LPC_GPIO2->FIOSET |= (output[x+1] << x); // LED FUNCTION AT , 2,3,4,5,6
+		else{
+			printf("invalid input\n");
 		}
 	}
 	#endif
@@ -122,8 +124,8 @@ int main( void )
 		if((LPC_ADC->ADGDR & (1<<31)) == 0){
 		}
 		else{
-			val = LPC_ADC->ADGDR & (0xfff << 4);
-			val /= 1241*16;
+			val = LPC_ADC->ADGDR >> 4 & 0xfff;
+			val /= 1241;
 			printf("%f\n", val);
 		}
 	}
