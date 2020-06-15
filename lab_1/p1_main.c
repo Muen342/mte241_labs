@@ -6,6 +6,7 @@
 #include <LPC17xx.h>
 #include "stdio.h"
 #include "uart.h"
+#include "stdlib.h"
 #define part_4
 int main( void ) 
 {
