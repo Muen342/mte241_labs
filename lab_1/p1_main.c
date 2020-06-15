@@ -24,7 +24,7 @@ int main( void )
 	
 	#endif
 	
-	##ifdef part_2
+	#ifdef part_2
 	while (1) {
 		if((LPC_GPIO1->FIOPIN & (1 << 20)) == 0) //  PRESSED
 		{
@@ -101,8 +101,8 @@ int main( void )
 			LPC_GPIO1->FIOSET |= (output[x] << (28+x));
 		}
 		LPC_GPIO1->FIOSET |= (output[2] << 31);
-		for (int x = 0; x < 7; x++) {	// LED FUNCTION AT 28, 29
-			LPC_GPIO1->FIOSET |= (output[x+1] << x); // LED FUNCTION AT , 2,3,4,5,6
+		for (int x = 2; x < 7; x++) {	
+			LPC_GPIO2->FIOSET |= (output[x+1] << x); // LED FUNCTION AT , 2,3,4,5,6
 		}
 	}
 	#endif
@@ -111,5 +111,20 @@ int main( void )
 	LPC_SC->PCONP |= 1 << 12;
 	LPC_PINCON->PINSEL1 &= ~(0x03 <<18);//clear this value
 	LPC_PINCON->PINSEL1 |= (0x01<<18);//set it as adc ad0.2
+	LPC_ADC->ADCR |= 4 << 8;//divide by 4+1 so 5 mhz
+	LPC_ADC->ADCR |= 1 <<21;//enable circuit
+	LPC_ADC->ADCR |= 1 << 2;
+	LPC_ADC -> ADCR &= ~1;
+	float val = 0;
+	while(1){
+		LPC_ADC->ADCR |= 1 <<24;//start conversion
+		if((LPC_ADC->ADGDR & (1<<31)) == 0){
+		}
+		else{
+			val = LPC_ADC->ADGDR & (0xfff << 4);
+			val /= 1241*16;
+			printf("%f\n", val);
+		}
+	}
 	#endif
 }
