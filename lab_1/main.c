@@ -9,7 +9,7 @@
 #include "stdlib.h"
 #include "stdbool.h"
 #include "ctype.h"
-//#include <cmsis_os2.h>
+#include <cmsis_os2.h>
 #define part_1
 
 int prevbutton = 1;
@@ -33,7 +33,7 @@ void button(void *arg){
 			}
 			prevbutton = 1;
 		}
-		//osdelay
+		osThreadYield();
 	}
 }
 
@@ -55,6 +55,7 @@ void ADC(void *arg){
 			val /= 1241;
 			printf("%f\n", val);
 		}
+		osThreadYield();
 	}
 }
 
@@ -86,6 +87,7 @@ void joystick(void *arg){
 			else
 			printf(" Not Pressed centered\n"); // NOT PRESSED, NO JOYSTICK MOVEMENT
 		}
+		osThreadYield();
 	}
 }
 
@@ -93,9 +95,9 @@ int main( void )
 {
 	LPC_GPIO2->FIODIR = 0x1f<<2; // Configure pins 2 to 6 on Port 0 as Output
 	LPC_GPIO1->FIODIR=0xf<<28;//configure pin 28-31 as output led and set to low
-	//osKernelInitialize();
-	//osThreadNew(button, NULL, NULL);
-	//osThreadNew(ADC, NULL, NULL);
+	osKernelInitialize();
+	osThreadNew(button, NULL, NULL);
+	osThreadNew(ADC, NULL, NULL);
 	//osThreadNew(joystick, NULL, NULL);
-	//osKernelStart();
+	osKernelStart();
 }
