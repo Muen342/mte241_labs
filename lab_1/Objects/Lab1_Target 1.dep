@@ -1,6 +1,22 @@
 Dependencies for Project 'Lab1', Target 'Target 1': (DO NOT MODIFY !)
 CompilerVersion: 5060750::V5.06 update 6 (build 750)::.\ARMCC
-F (.\p1_main.c)(0x5EE79DF1)(--c99 --gnu -c --cpu Cortex-M3 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections-I.\RTE\Device\LPC1768-I.\RTE\_Target_1-IC:\Users\muen2\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\muen2\AppData\Local\Arm\Packs\Keil\LPC1700_DFP\2.6.0\Device\Include-D__UVISION_VERSION="530" -D_RTE_ -DLPC175x_6x -D_RTE_ -D__RTGT_UART-o .\objects\p1_main.o --omf_browse .\objects\p1_main.crf --depend .\objects\p1_main.d)
+F (.\Retarget.c)(0x5EFDF9AB)(--c99 --gnu -c --cpu Cortex-M3 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections-I.\RTE\Device\LPC1768-I.\RTE\_Target_1-IC:\Users\muen2\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\muen2\AppData\Local\Arm\Packs\Keil\LPC1700_DFP\2.6.0\Device\Include-D__UVISION_VERSION="530" -D_RTE_ -DLPC175x_6x -D_RTE_ -D__RTGT_UART-o .\objects\retarget.o --omf_browse .\objects\retarget.crf --depend .\objects\retarget.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5E53F91C)
+I (C:\Keil_v5\ARM\ARMCC\include\rt_misc.h)(0x5E53F91A)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5E53F91C)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5E53F91C)
+I (uart.h)(0x5EFDF9D4)
+F (.\uart.c)(0x5EFDF9BD)(--c99 --gnu -c --cpu Cortex-M3 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections-I.\RTE\Device\LPC1768-I.\RTE\_Target_1-IC:\Users\muen2\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\muen2\AppData\Local\Arm\Packs\Keil\LPC1700_DFP\2.6.0\Device\Include-D__UVISION_VERSION="530" -D_RTE_ -DLPC175x_6x -D_RTE_ -D__RTGT_UART-o .\objects\uart.o --omf_browse .\objects\uart.crf --depend .\objects\uart.d)
+I (C:\Users\muen2\AppData\Local\Arm\Packs\Keil\LPC1700_DFP\2.6.0\Device\Include\lpc17xx.h)(0x584985E2)
+I (C:\Users\muen2\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\core_cm3.h)(0x5E8F79E2)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5E53F91C)
+I (C:\Users\muen2\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_version.h)(0x5E8F79E2)
+I (C:\Users\muen2\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_compiler.h)(0x5E83AF82)
+I (C:\Users\muen2\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_armcc.h)(0x5E8F79E2)
+I (C:\Users\muen2\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\mpu_armv7.h)(0x5E8F79E2)
+I (C:\Users\muen2\AppData\Local\Arm\Packs\Keil\LPC1700_DFP\2.6.0\Device\Include\system_LPC17xx.h)(0x584985E2)
+I (uart.h)(0x5EFDF9D4)
+F (.\main.c)(0x5EFE0183)(--c99 --gnu -c --cpu Cortex-M3 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections-I.\RTE\Device\LPC1768-I.\RTE\_Target_1-IC:\Users\muen2\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\muen2\AppData\Local\Arm\Packs\Keil\LPC1700_DFP\2.6.0\Device\Include-D__UVISION_VERSION="530" -D_RTE_ -DLPC175x_6x -D_RTE_ -D__RTGT_UART-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
 I (C:\Users\muen2\AppData\Local\Arm\Packs\Keil\LPC1700_DFP\2.6.0\Device\Include\LPC17xx.h)(0x584985E2)
 I (C:\Users\muen2\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\core_cm3.h)(0x5E8F79E2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5E53F91C)
@@ -10,26 +26,10 @@ I (C:\Users\muen2\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cms
 I (C:\Users\muen2\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\mpu_armv7.h)(0x5E8F79E2)
 I (C:\Users\muen2\AppData\Local\Arm\Packs\Keil\LPC1700_DFP\2.6.0\Device\Include\system_LPC17xx.h)(0x584985E2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5E53F91C)
-I (uart.h)(0x5EE1AA0F)
+I (uart.h)(0x5EFDF9D4)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5E53F91C)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5E53F91C)
 I (C:\Keil_v5\ARM\ARMCC\include\ctype.h)(0x5E53F91C)
-F (.\Retarget.c)(0x5EE1A9EC)(--c99 --gnu -c --cpu Cortex-M3 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections-I.\RTE\Device\LPC1768-I.\RTE\_Target_1-IC:\Users\muen2\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\muen2\AppData\Local\Arm\Packs\Keil\LPC1700_DFP\2.6.0\Device\Include-D__UVISION_VERSION="530" -D_RTE_ -DLPC175x_6x -D_RTE_ -D__RTGT_UART-o .\objects\retarget.o --omf_browse .\objects\retarget.crf --depend .\objects\retarget.d)
-I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5E53F91C)
-I (C:\Keil_v5\ARM\ARMCC\include\rt_misc.h)(0x5E53F91A)
-I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5E53F91C)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5E53F91C)
-I (uart.h)(0x5EE1AA0F)
-F (.\uart.c)(0x5EE1AA1F)(--c99 --gnu -c --cpu Cortex-M3 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections-I.\RTE\Device\LPC1768-I.\RTE\_Target_1-IC:\Users\muen2\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\muen2\AppData\Local\Arm\Packs\Keil\LPC1700_DFP\2.6.0\Device\Include-D__UVISION_VERSION="530" -D_RTE_ -DLPC175x_6x -D_RTE_ -D__RTGT_UART-o .\objects\uart.o --omf_browse .\objects\uart.crf --depend .\objects\uart.d)
-I (C:\Users\muen2\AppData\Local\Arm\Packs\Keil\LPC1700_DFP\2.6.0\Device\Include\lpc17xx.h)(0x584985E2)
-I (C:\Users\muen2\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\core_cm3.h)(0x5E8F79E2)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5E53F91C)
-I (C:\Users\muen2\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_version.h)(0x5E8F79E2)
-I (C:\Users\muen2\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_compiler.h)(0x5E83AF82)
-I (C:\Users\muen2\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_armcc.h)(0x5E8F79E2)
-I (C:\Users\muen2\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\mpu_armv7.h)(0x5E8F79E2)
-I (C:\Users\muen2\AppData\Local\Arm\Packs\Keil\LPC1700_DFP\2.6.0\Device\Include\system_LPC17xx.h)(0x584985E2)
-I (uart.h)(0x5EE1AA0F)
 F (RTE\Device\LPC1768\RTE_Device.h)(0x5D5C2A1A)()
 F (RTE\Device\LPC1768\startup_LPC17xx.s)(0x5ECAA652)(--cpu Cortex-M3 --pd "__EVAL SETA 1" -g --apcs=interwork --pd "__MICROLIB SETA 1"-I.\RTE\Device\LPC1768-I.\RTE\_Target_1-IC:\Users\muen2\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\muen2\AppData\Local\Arm\Packs\Keil\LPC1700_DFP\2.6.0\Device\Include--pd "__UVISION_VERSION SETA 530" --pd "_RTE_ SETA 1" --pd "LPC175x_6x SETA 1" --pd "_RTE_ SETA 1"--list .\listings\startup_lpc17xx.lst --xref -o .\objects\startup_lpc17xx.o --depend .\objects\startup_lpc17xx.d)
 F (RTE\Device\LPC1768\system_LPC17xx.c)(0x584985E2)(--c99 --gnu -c --cpu Cortex-M3 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections-I.\RTE\Device\LPC1768-I.\RTE\_Target_1-IC:\Users\muen2\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\muen2\AppData\Local\Arm\Packs\Keil\LPC1700_DFP\2.6.0\Device\Include-D__UVISION_VERSION="530" -D_RTE_ -DLPC175x_6x -D_RTE_ -D__RTGT_UART-o .\objects\system_lpc17xx.o --omf_browse .\objects\system_lpc17xx.crf --depend .\objects\system_lpc17xx.d)
