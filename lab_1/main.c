@@ -63,29 +63,80 @@ void joystick(void *arg){
 	while (1) {
 		if((LPC_GPIO1->FIOPIN & (1 << 20)) == 0) //  PRESSED
 		{
-			if (((LPC_GPIO1->FIOPIN & (1 << 23)) == 0)) // NORTH
-				printf("North, Pressed\n");
-			else if (((LPC_GPIO1->FIOPIN & (1 << 24)) == 0)) // EAST
-				printf("East, Pressed\n");
-			else if (((LPC_GPIO1->FIOPIN & (1 << 25)) == 0)) // SOUTH
-				printf("South, Pressed\n");
-			else if (((LPC_GPIO1->FIOPIN & (1 << 26)) == 0)) // WEST
-				printf("West, Pressed\n"); 
+			if (((LPC_GPIO1->FIOPIN & (1 << 23)) == 0)) 
+			{	// NORTH, SHOW 001
+				LPC_GPIO2->FIOSET = 1 << 2;
+				LPC_GPIO1->FIOSET = 1 << 28;
+				LPC_GPIO1->FIOCLR = 1 << 29;
+				LPC_GPIO1->FIOCLR = 1u << 31;
+			}
+			else if (((LPC_GPIO1->FIOPIN & (1 << 24)) == 0)) 
+			{ 	// EAST, SHOW 010
+				LPC_GPIO2->FIOSET = 1 << 2;
+				LPC_GPIO1->FIOCLR = 1 << 28;
+				LPC_GPIO1->FIOSET = 1 << 29;
+				LPC_GPIO1->FIOCLR = 1u << 31;
+			}
+			else if (((LPC_GPIO1->FIOPIN & (1 << 25)) == 0)) 
+			{	// SOUTH, SHOW 011
+				LPC_GPIO2->FIOSET = 1 << 2;
+				LPC_GPIO1->FIOSET = 1 << 28;
+				LPC_GPIO1->FIOSET = 1 << 29;
+				LPC_GPIO1->FIOCLR = 1u << 31;	
+			}
+			else if (((LPC_GPIO1->FIOPIN & (1 << 26)) == 0)) 
+			{	// WEST, SHOW 100
+				LPC_GPIO2->FIOSET = 1 << 2;
+				LPC_GPIO1->FIOCLR = 1 << 28;
+				LPC_GPIO1->FIOCLR = 1 << 29;
+				LPC_GPIO1->FIOSET = 1u << 31;
+			}
 			else
-			printf("Pressed centered\n"); // PRESSED, NO JOYSTICK MOVEMENT 
+			{
+				LPC_GPIO2->FIOCLR = 1 << 2;
+				LPC_GPIO1->FIOCLR = 1 << 28;
+				LPC_GPIO1->FIOCLR = 1 << 29;
+				LPC_GPIO1->FIOCLR = 1u << 31;
+			}
 		}
 		else if ((LPC_GPIO1->FIOPIN & (1 << 20)) != 0)
 		{
-			if (((LPC_GPIO1->FIOPIN & (1 << 23)) == 0)) // NORTH
-				printf("North, Not Pressed\n");
-			else if (((LPC_GPIO1->FIOPIN & (1 << 24)) == 0)) // EAST
-				printf("East, Not Pressed\n");
-			else if (((LPC_GPIO1->FIOPIN & (1 << 25)) == 0)) // SOUTH
-				printf("South, Not Pressed\n");
-			else if (((LPC_GPIO1->FIOPIN & (1 << 26)) == 0)) // WEST
-				printf("West, Not Pressed\n"); 
+			if (((LPC_GPIO1->FIOPIN & (1 << 23)) == 0)) 
+			{	// NORTH, SHOW 001
+				LPC_GPIO2->FIOCLR = 1 << 2;
+				LPC_GPIO1->FIOSET = 1 << 28;
+				LPC_GPIO1->FIOCLR = 1 << 29;
+				LPC_GPIO1->FIOCLR = 1u << 31;
+			}
+			else if (((LPC_GPIO1->FIOPIN & (1 << 24)) == 0)) 
+			{	// EAST, SHOW 010
+				LPC_GPIO2->FIOCLR = 1 << 2;
+				LPC_GPIO1->FIOCLR = 1 << 28;
+				LPC_GPIO1->FIOSET = 1 << 29;
+				LPC_GPIO1->FIOCLR = 1u << 31;
+				
+			}
+			else if (((LPC_GPIO1->FIOPIN & (1 << 25)) == 0)) 
+			{	// SOUTH, SHOW 011
+				LPC_GPIO2->FIOCLR = 1 << 2;
+				LPC_GPIO1->FIOSET = 1 << 29;
+				LPC_GPIO1->FIOSET = 1 << 28;
+				LPC_GPIO1->FIOCLR = 1u << 31;
+			}
+			else if (((LPC_GPIO1->FIOPIN & (1 << 26)) == 0)) 
+			{	// WEST, SHOW 100
+				LPC_GPIO2->FIOCLR = 1 << 2;
+				LPC_GPIO1->FIOCLR = 1 << 28;
+				LPC_GPIO1->FIOCLR = 1 << 29;
+				LPC_GPIO1->FIOSET = 1u << 31;
+			}
 			else
-			printf(" Not Pressed centered\n"); // NOT PRESSED, NO JOYSTICK MOVEMENT
+			{	
+				LPC_GPIO2->FIOCLR = 1 << 2;
+				LPC_GPIO1->FIOCLR = 1 << 28;
+				LPC_GPIO1->FIOCLR = 1 << 29;
+				LPC_GPIO1->FIOCLR = 1u << 31;
+			}
 		}
 		osThreadYield();
 	}
