@@ -93,7 +93,7 @@ void joystick(void *arg){
 			}
 			else
 			{	// CENTERED, PRESSED, SHOW 000
-				LPC_GPIO2->FIOCLR = 1 << 2;
+				LPC_GPIO2->FIOSET = 1 << 2;
 				LPC_GPIO1->FIOCLR = 1 << 28;
 				LPC_GPIO1->FIOCLR = 1 << 29;
 				LPC_GPIO1->FIOCLR = 1u << 31;
