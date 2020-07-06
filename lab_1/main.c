@@ -65,35 +65,35 @@ void joystick(void *arg){
 		{
 			if (((LPC_GPIO1->FIOPIN & (1 << 23)) == 0)) 
 			{	// NORTH, PRESSED, SHOW 001
-				LPC_GPIO2->FIOSET = 1 << 4;
+				LPC_GPIO2->FIOSET = 1 << 2;
 				LPC_GPIO1->FIOSET = 1 << 28;
 				LPC_GPIO1->FIOCLR = 1 << 29;
 				LPC_GPIO1->FIOCLR = 1u << 31;
 			}
 			else if (((LPC_GPIO1->FIOPIN & (1 << 24)) == 0)) 
 			{ 	// EAST, PRESSED, SHOW 010
-				LPC_GPIO2->FIOSET = 1 << 4;
+				LPC_GPIO2->FIOSET = 1 << 2;
 				LPC_GPIO1->FIOCLR = 1 << 28;
 				LPC_GPIO1->FIOSET = 1 << 29;
 				LPC_GPIO1->FIOCLR = 1u << 31;
 			}
 			else if (((LPC_GPIO1->FIOPIN & (1 << 25)) == 0)) 
 			{	// SOUTH, PRESSED, SHOW 011
-				LPC_GPIO2->FIOSET = 1 << 4;
+				LPC_GPIO2->FIOSET = 1 << 2;
 				LPC_GPIO1->FIOSET = 1 << 28;
 				LPC_GPIO1->FIOSET = 1 << 29;
 				LPC_GPIO1->FIOCLR = 1u << 31;	
 			}
 			else if (((LPC_GPIO1->FIOPIN & (1 << 26)) == 0)) 
 			{	// WEST, PRESSED, SHOW 100
-				LPC_GPIO2->FIOSET = 1 << 4;
+				LPC_GPIO2->FIOSET = 1 << 2;
 				LPC_GPIO1->FIOCLR = 1 << 28;
 				LPC_GPIO1->FIOCLR = 1 << 29;
 				LPC_GPIO1->FIOSET = 1u << 31;
 			}
 			else
 			{	// CENTERED, PRESSED, SHOW 000
-				LPC_GPIO2->FIOSET = 1 << 4;
+				LPC_GPIO2->FIOSET = 1 << 2;
 				LPC_GPIO1->FIOCLR = 1 << 28;
 				LPC_GPIO1->FIOCLR = 1 << 29;
 				LPC_GPIO1->FIOCLR = 1u << 31;
@@ -103,14 +103,14 @@ void joystick(void *arg){
 		{
 			if (((LPC_GPIO1->FIOPIN & (1 << 23)) == 0)) 
 			{	// NORTH, NOT PRESSED, SHOW 001
-				LPC_GPIO2->FIOCLR = 1 << 4;
+				LPC_GPIO2->FIOCLR = 1 << 2;
 				LPC_GPIO1->FIOSET = 1 << 28;
 				LPC_GPIO1->FIOCLR = 1 << 29;
 				LPC_GPIO1->FIOCLR = 1u << 31;
 			}
 			else if (((LPC_GPIO1->FIOPIN & (1 << 24)) == 0)) 
 			{	// EAST, NOT PRESSED, SHOW 010
-				LPC_GPIO2->FIOCLR = 1 << 4;
+				LPC_GPIO2->FIOCLR = 1 << 2;
 				LPC_GPIO1->FIOCLR = 1 << 28;
 				LPC_GPIO1->FIOSET = 1 << 29;
 				LPC_GPIO1->FIOCLR = 1u << 31;
@@ -118,21 +118,21 @@ void joystick(void *arg){
 			}
 			else if (((LPC_GPIO1->FIOPIN & (1 << 25)) == 0)) 
 			{	// SOUTH, NOT PRESSED, SHOW 011
-				LPC_GPIO2->FIOCLR = 1 << 4;
+				LPC_GPIO2->FIOCLR = 1 << 2;
 				LPC_GPIO1->FIOSET = 1 << 29;
 				LPC_GPIO1->FIOSET = 1 << 28;
 				LPC_GPIO1->FIOCLR = 1u << 31;
 			}
 			else if (((LPC_GPIO1->FIOPIN & (1 << 26)) == 0)) 
 			{	// WEST, NOT PRESSED, SHOW 100
-				LPC_GPIO2->FIOCLR = 1 << 4;
+				LPC_GPIO2->FIOCLR = 1 << 2;
 				LPC_GPIO1->FIOCLR = 1 << 28;
 				LPC_GPIO1->FIOCLR = 1 << 29;
 				LPC_GPIO1->FIOSET = 1u << 31;
 			}
 			else
 			{	// CENTERD, NOT PRESSED, SHOW 000
-				LPC_GPIO2->FIOCLR = 1 << 4;
+				LPC_GPIO2->FIOCLR = 1 << 2;
 				LPC_GPIO1->FIOCLR = 1 << 28;
 				LPC_GPIO1->FIOCLR = 1 << 29;
 				LPC_GPIO1->FIOCLR = 1u << 31;
