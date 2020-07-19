@@ -13,22 +13,26 @@
 #include <rtx_os.h>
 #include "random.h"
 #include "lfsr113.h"
-int TPS = 268451096;
+int TPS = 268451096;//ticks per second
 int ARRIVALRATE = 9;
 int SERVICERATE = 10;
 int QSIZE = 10;
 int msg = NULL;
 int currentClient = 1;
 int MAXCLIENTS = 	2;
-int totalRecieved = 0;
-int totalOverflow = 0;
-int totalSent = 0;
+int totalRecieved1 = 0;
+int totalOverflow1 = 0;
+int totalSent1 = 0;
+int totalRecieved2 = 0;
+int totalOverflow2 = 0;
+int totalSent2 = 0;
 uint32_t getTicks(rate){
 	uint32_t nevent = next_event();
 	nevent = nevent*TPS/rate;
 	nevent = (nevent>>16);
 	return nevent;
 }
+
 osMessageQueueId_t createNewQ(){
 	osMessageQueueId_t q_id = osMessageQueueNew(QSIZE, sizeof(int), NULL);
 	return q_id;
@@ -36,7 +40,8 @@ osMessageQueueId_t createNewQ(){
 
 void monitor(void *arg){
 	while(1){
-		printf("Total Received: %i\nTotal Sent: %i\nTotal Overflow: %i\n", totalRecieved, totalSent, totalOverflow);
+		printf("Queue 1:\nTotal Received: %i\nTotal Sent: %i\nTotal Overflow: %i\n", totalRecieved1, totalSent1, totalOverflow1);
+		printf("Queue 2:\nTotal Received: %i\nTotal Sent: %i\nTotal Overflow: %i\n", totalRecieved2, totalSent2, totalOverflow2);
 		osDelay(TPS);
 	}
 }
@@ -47,20 +52,20 @@ void client(void *arg){
 		if(currentClient == MAXCLIENTS){
 			osStatus_t stat = osMessageQueuePut(q2, &msg, 0, 0);
 			if(stat == osErrorResource){
-				totalOverflow++;
+				totalOverflow2++;
 			}
 			else{
-				totalSent++;
+				totalSent2++;
 			}
 			currentClient = 1;
 		}
 		else{
 			osStatus_t stat = osMessageQueuePut(q1, &msg, 0, 0);
 			if(stat == osErrorResource){
-				totalOverflow++;
+				totalOverflow1++;
 			}
 			else{
-				totalSent++;
+				totalSent1++;
 			}
 			currentClient++;
 		}
@@ -69,8 +74,9 @@ void client(void *arg){
 }
 void server(void *arg){
 	while(1){
-		osMessageQueueGet(arg, &msg, NULL, osWaitForever);
-		totalRecieved++;
+		osMessageQueueGet(&arg, &msg, NULL, osWaitForever);
+		//find way to find out which q it is servicing
+		totalRecieved1++;
 		osDelay(getTicks(SERVICERATE));
 	}
 }

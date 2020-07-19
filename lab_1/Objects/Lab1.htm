@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\Lab1.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\Lab1.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sun Jul 19 13:51:01 2020
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sun Jul 19 14:51:51 2020
 <BR><P>
 <H3>Maximum Stack Usage =        104 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -761,7 +761,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
 </UL>
-<P><STRONG><a name="[42]"></a>monitor</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, main.o(i.monitor))
+<P><STRONG><a name="[42]"></a>monitor</STRONG> (Thumb, 48 bytes, Stack size 0 bytes, main.o(i.monitor))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = monitor &rArr; __2printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osDelay
@@ -795,8 +795,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fputc
 </UL>
 
-<P><STRONG><a name="[41]"></a>server</STRONG> (Thumb, 44 bytes, Stack size 0 bytes, main.o(i.server))
-<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = server &rArr; osMessageQueueGet &rArr; osRtxPostProcess
+<P><STRONG><a name="[41]"></a>server</STRONG> (Thumb, 44 bytes, Stack size 16 bytes, main.o(i.server))
+<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = server &rArr; osMessageQueueGet &rArr; osRtxPostProcess
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueueGet
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osDelay
