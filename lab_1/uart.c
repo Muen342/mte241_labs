@@ -22,6 +22,8 @@
 //#include "type.h"
 #include "uart.h"
 
+extern uint32_t SystemCoreClock;
+
 //#ifdef __DBG_ITM
 volatile int ITM_RxBuffer = ITM_RXBUFFER_EMPTY;  /*  CMSIS Debug Input        */
 //#endif

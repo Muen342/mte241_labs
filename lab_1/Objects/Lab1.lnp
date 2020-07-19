@@ -2,6 +2,8 @@
 ".\objects\retarget.o"
 ".\objects\uart.o"
 ".\objects\main.o"
+".\objects\lfsr113.o"
+".\objects\random.o"
 "..\..\..\..\..\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\RTOS2\RTX\Library\ARM\RTX_CM3.lib"
 ".\objects\rtx_lib.o"
 ".\objects\rtx_config.o"

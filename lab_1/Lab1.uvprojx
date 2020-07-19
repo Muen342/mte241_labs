@@ -398,6 +398,16 @@
               <FileType>1</FileType>
               <FilePath>.\main.c</FilePath>
             </File>
+            <File>
+              <FileName>lfsr113.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\lfsr113.c</FilePath>
+            </File>
+            <File>
+              <FileName>random.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\random.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
