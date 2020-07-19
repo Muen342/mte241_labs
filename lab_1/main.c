@@ -36,16 +36,16 @@ osMessageQueueId_t createNewQ(){
 
 void monitor(void *arg){
 	while(1){
-		printf("Total Received: %i\nTotal Sent: %i\nTotal Overflow: %i\n", totalRecieved, totalSent, totalOverflow);
+		printf("Total Received: %i\nTotal Sent: %i\nTotal Overflow: %i\n", totalRecieved, totalSent, totalOverflow); // displays monitored values for q1 and q2
 		osDelay(TPS);
 	}
 }
 void client(void *arg){
-	osMessageQueueId_t q1 = &arg[0];
+	osMessageQueueId_t q1 = &arg[0];  // assigns q1 and q2 arg array positions
 	osMessageQueueId_t q2 = &arg[1];
 	while(1){
 		if(currentClient == MAXCLIENTS){
-			osStatus_t stat = osMessageQueuePut(q2, &msg, 0, 0);
+			osStatus_t stat = osMessageQueuePut(q2, &msg, 0, 0); // status of q2 as message is sent to q2
 			if(stat == osErrorResource){
 				totalOverflow++;
 			}
@@ -55,9 +55,9 @@ void client(void *arg){
 			currentClient = 1;
 		}
 		else{
-			osStatus_t stat = osMessageQueuePut(q1, &msg, 0, 0);
+			osStatus_t stat = osMessageQueuePut(q1, &msg, 0, 0); // status of q1 as message is sent to q1
 			if(stat == osErrorResource){
-				totalOverflow++;
+				totalOverflow++; // inc overflow val
 			}
 			else{
 				totalSent++;
