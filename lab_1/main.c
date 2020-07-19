@@ -20,7 +20,9 @@ int QSIZE = 10;
 int msg = NULL;
 int currentClient = 1;
 int MAXCLIENTS = 	2;
-
+int totalRecieved = 0;
+int totalOverflow = 0;
+int totalSent = 0;
 uint32_t getTicks(rate){
 	uint32_t nevent = next_event();
 	nevent = nevent*TPS/rate;
@@ -34,20 +36,32 @@ osMessageQueueId_t createNewQ(){
 
 void monitor(void *arg){
 	while(1){
-		//do the displaying here
+		printf("Total Received: %i\nTotal Sent: %i\nTotal Overflow: %i\n", totalRecieved, totalSent, totalOverflow);
 		osDelay(TPS);
 	}
 }
 void client(void *arg){
-	osMessageQueueId_t q1 = createNewQ();
-	osMessageQueueId_t q2 = createNewQ();
+	osMessageQueueId_t q1 = &arg[0];
+	osMessageQueueId_t q2 = &arg[1];
 	while(1){
 		if(currentClient == MAXCLIENTS){
-			osMessageQueuePut(q2, &msg, 0, 0);
+			osStatus_t stat = osMessageQueuePut(q2, &msg, 0, 0);
+			if(stat == osErrorResource){
+				totalOverflow++;
+			}
+			else{
+				totalSent++;
+			}
 			currentClient = 1;
 		}
 		else{
-			osMessageQueuePut(q1, &msg, 0, 0);
+			osStatus_t stat = osMessageQueuePut(q1, &msg, 0, 0);
+			if(stat == osErrorResource){
+				totalOverflow++;
+			}
+			else{
+				totalSent++;
+			}
 			currentClient++;
 		}
 		osDelay(getTicks(ARRIVALRATE*MAXCLIENTS));//because they are both in this loop it needs to be multiplied
@@ -55,13 +69,20 @@ void client(void *arg){
 }
 void server(void *arg){
 	while(1){
-		//find a way to pass in the qid into this thread and then deal with it with
-		//osMessageQueueGet(q_id, &msg, NULL, osWaitForever);
+		osMessageQueueGet(arg, &msg, NULL, osWaitForever);
+		totalRecieved++;
 		osDelay(getTicks(SERVICERATE));
 	}
 }
 int main( void ) 
 {
+	osMessageQueueId_t q1 = createNewQ();
+	osMessageQueueId_t q2 = createNewQ();
+	osMessageQueueId_t clients[2] = {q1, q2};
 	osKernelInitialize();
+	osThreadNew(client, clients, NULL);
+	osThreadNew(server, q1, NULL);
+	osThreadNew(server, q2, NULL);
+	osThreadNew(monitor, NULL, NULL);
 	osKernelStart();
 }
