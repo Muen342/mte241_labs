@@ -26,6 +26,7 @@ int totalRecieved2 = 0;
 int totalOverflow2 = 0;
 int totalSent2 = 0;
 int currentTime = 0;
+int firstDisplay = 0;
 osMessageQueueId_t q1;
 osMessageQueueId_t q2;
 
@@ -38,7 +39,6 @@ uint32_t getTicks(rate){
 
 void client(void *arg){
 	while(1){
-		osDelay(getTicks(ARRIVALRATE*MAXCLIENTS));//because they are both in this loop it needs to be multiplied also yields to the other threads
 		if(currentClient == MAXCLIENTS){
 			osStatus_t stat = osMessageQueuePut(q2, &msg, 0, 0); // status of q2 as message is sent to q2
 			if(stat == osErrorResource){
@@ -59,22 +59,26 @@ void client(void *arg){
 			}
 			currentClient++;
 		}
-		osThreadYield();
+		osDelay(getTicks(ARRIVALRATE*MAXCLIENTS));//because they are both in this loop it needs to be multiplied also yields to the other threads
 	}
 }
 void monitor(void *arg){
 	while(1){
-		osDelay(osKernelGetTickFreq());
+		if(firstDisplay == 0){
+			firstDisplay++;
+			osDelay(osKernelGetTickFreq());
+		}
+		else{
+			osDelay(0.85*osKernelGetTickFreq());
+		}
 		currentTime++;
 		printf("Current Time: %is\n", currentTime);
 		printf("Queue 1:  Total Received: %i  Total Sent: %i  Total Overflow: %i\n", totalRecieved1, totalSent1, totalOverflow1);// displays monitored values for q1 and q2
 		printf("Queue 2:  Total Received: %i  Total Sent: %i  Total Overflow: %i\n", totalRecieved2, totalSent2, totalOverflow2);
-		osThreadYield();
 	}
 }
 void server(void *arg){
 	while(1){
-		osDelay(getTicks(SERVICERATE));
 		osMessageQueueGet(arg, &msg, NULL, osWaitForever);
 		//find way to find out which q it is servicing
 		if(arg == q1){
@@ -83,7 +87,7 @@ void server(void *arg){
 		else if(arg == q2){
 			totalRecieved2++;
 		}
-		osThreadYield();
+		osDelay(getTicks(SERVICERATE));
 	}
 }
 int main( void ) 
